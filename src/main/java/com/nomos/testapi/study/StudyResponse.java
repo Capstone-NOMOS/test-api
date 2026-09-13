@@ -1,23 +1,28 @@
 package com.nomos.testapi.study;
 
-import java.time.LocalDate;
+import java.time.Instant;
 
 public record StudyResponse(
-        Long id,
+        String id,
         String title,
-        ParticipantInfo participants,
-        LocalDate startDate
+        String description,
+        String leaderName,
+        int memberCount,
+        int maxMembers,
+        String status,
+        Instant createdAt
 ) {
-
-    public record ParticipantInfo(int current, int max) {
-    }
 
     public static StudyResponse from(Study study) {
         return new StudyResponse(
                 study.id(),
                 study.title(),
-                new ParticipantInfo(study.currentParticipants(), study.maxParticipants()),
-                study.startDate()
+                study.description(),
+                study.leaderName(),
+                study.memberCount(),
+                study.maxMembers(),
+                study.status(),
+                study.createdAt()
         );
     }
 }

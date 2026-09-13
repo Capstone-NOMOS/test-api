@@ -1,12 +1,15 @@
 package com.nomos.testapi.study;
 
-import java.time.LocalDate;
+import java.time.Instant;
 
 public record Study(
-        Long id,
+        String id,
         String title,
-        int currentParticipants,
-        int maxParticipants,
-        LocalDate startDate
+        String description,
+        String leaderName,
+        int memberCount,
+        int maxMembers,
+        String status,
+        Instant createdAt
 ) {
 }
